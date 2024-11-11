@@ -9,6 +9,5 @@ test.describe('Login Tests', () => {
     await loginPage.login('mitraku_reg001@yopmail.com', 'Qwe123!@#');
     await page.waitForURL('**/store')
     expect(await page.url()).toBe('https://mitraku-dev.on-premise.mitrais-dev.com/store')
-    // expect(await dashboardPage.getWelcomeMessage()).toContain('Welcome, testuser');
   });
 });
