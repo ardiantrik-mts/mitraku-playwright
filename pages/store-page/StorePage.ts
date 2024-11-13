@@ -8,7 +8,7 @@ export class StorePage extends BasePage {
 
     constructor(page: Page) {
         super(page)
-        this.createStoreButton = page.locator('//p[text()="Buat Toko"]/parent::a')
+        this.createStoreButton = page.locator('//p[text()="Create Store"]/parent::a')
         this.editStoreButton = page.locator('//p[text()="Ubah Toko"]/parent::button')
     }
 

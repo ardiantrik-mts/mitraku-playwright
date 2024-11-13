@@ -6,7 +6,7 @@ test.describe('Login Tests', () => {
     const loginPage = new LoginPage(page);
 
     await loginPage.navigateTo('https://mitraku-dev.on-premise.mitrais-dev.com/');
-    await loginPage.login('mitraku_reg001@yopmail.com', 'Qwe123!@#');
+    await loginPage.login('mitraku-auto@yopmail.com', 'Qwe123!@#');
     await page.waitForURL('**/store')
     expect(await page.url()).toBe('https://mitraku-dev.on-premise.mitrais-dev.com/store')
   });
