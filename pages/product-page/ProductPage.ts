@@ -10,7 +10,7 @@ export class ProductPage extends BasePage {
 
     constructor(page: Page) {
         super(page)
-        this.addProductButton = page.locator('//p[text()="Add Product"]/parent::a')
+        this.addProductButton = page.locator('//p[text()="Add Product" or text()="Tambah Produk"]/ancestor::a')
         this.findProductField = page.locator('//input[@placeholder="Find Product"]')
     }
 

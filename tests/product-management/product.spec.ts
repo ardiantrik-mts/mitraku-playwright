@@ -1,49 +1,43 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../pages/LoginPage';
+import { faker } from '@faker-js/faker';
+import { AccountPage } from '../../pages/manage-account-page/AccountPage';
+import { SideBar } from '../../pages/SideBar';
+import { ProductPage } from '../../pages/product-page/ProductPage';
+import { ProductForm } from '../../pages/product-page/ProductForm';
+import { ProductData } from '../../interfaces/productData';
 
-test('test', async ({ page }) => {
-    //thi is dummy, straight up from recording
-  await page.goto('https://mitraku-dev.on-premise.mitrais-dev.com/');
-  await page.getByTestId('email').click();
-  await page.getByTestId('email').fill('mitraku_reg001@yopmail.com');
-  await page.getByTestId('email').press('Tab');
-  await page.getByTestId('password').fill('Qwe123!@#');
-  await page.getByTestId('password').press('Enter');
-  await page.getByRole('link', { name: 'Product List' }).click();
-  await page.getByRole('link', { name: 'Add Product' }).click();
-  await page.getByPlaceholder('Product Name').click();
-  await page.getByPlaceholder('Product Name').fill('ieieiei');
-  await page.getByText('Category*').click();
-  await page.getByTestId('category-dropdown').selectOption('80');
-  await page.getByTestId('type-dropdown').selectOption('82');
-  await page.getByTestId('type-dropdown').selectOption('80');
-  await page.getByTestId('type-dropdown').selectOption('81');
-  await page.getByTestId('type-dropdown').selectOption('');
-  await page.getByPlaceholder('Cth: Rp').click();
-  await page.getByTestId('type-dropdown').selectOption('80');
-  await page.getByPlaceholder('Cth: Rp').click();
-  await page.getByPlaceholder('Cth: Rp').fill('1000');
-  await page.getByPlaceholder('Cth: 5').click();
-  await page.getByPlaceholder('Cth: 5').fill('10');
-  await page.getByLabel('Item Unit*').selectOption('pound');
-  await page.getByPlaceholder('Product Name').click();
-  await page.getByPlaceholder('Product Name').fill('ieieiei444');
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByPlaceholder('Tuliskan deskripsi produk').click();
-  await page.getByPlaceholder('Tuliskan deskripsi produk').fill('gjgjgjgjgjgjgjgjgjg');
-  await page.locator('div').filter({ hasText: /^Foto 1$/ }).nth(1).click();
-  await page.locator('div').filter({ hasText: /^Foto 1$/ }).nth(1).setInputFiles('Image (1).jpg');
-  await page.locator('form span').nth(1).click();
-  await page.getByRole('button', { name: 'Save' }).click();
-  await page.getByText('Product successfully added.').click();
-  await page.getByLabel('Close').click();
-  await page.getByPlaceholder('Find Product').click();
-  await page.getByPlaceholder('Find Product').fill('ieiei');
-  await page.getByRole('link', { name: 'View Details' }).click();
-  await page.getByRole('link', { name: 'Edit Product' }).click();
-  await page.getByTestId('type-dropdown').selectOption('81');
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.locator('div').filter({ hasText: /^Foto 7$/ }).nth(1).click();
-  await page.locator('div').filter({ hasText: /^Foto 7$/ }).nth(1).setInputFiles('Screenshot 2024-11-12 090557.png');
-  await page.getByRole('button', { name: 'Save' }).click();
-  await page.getByLabel('Close').click();
+test.beforeEach(async ({ page }) => {
+    const loginPage = new LoginPage(page)
+    await loginPage.navigateTo('https://mitraku-dev.on-premise.mitrais-dev.com/');
+    await loginPage.login('mitraku-auto@yopmail.com', 'Qwe123!@#');
+    await page.waitForURL('**/store')
+});
+
+test.describe('Manage Account Tests', () => {
+  test('should edit profile infor successfully with valid data', async ({ page }) => {
+    const accountPage = new AccountPage(page)
+    const productPage = new ProductPage(page)
+    const productForm = new ProductForm(page)
+    const sidebar = new SideBar(page)
+
+    const productData: ProductData = {
+      name: faker.commerce.productName(),
+      category: "70",
+      type: "71",
+      price: faker.commerce.price({ min: 1000, max: 1000000, dec: 0 }),
+      stock: "100",
+      unit: "pieces",
+      description: faker.commerce.productDescription(),
+      image1: "test-image1.jpg"
+    }
+
+    await sidebar.clickProductList()
+    await page.waitForURL('**/produk')
+    await page.waitForTimeout(3000)
+    await productPage.clickAddProduct()
+    await productForm.addProduct(productData)
+    await page.waitForTimeout(2000)
+    expect(await page.locator('//p[text()="Product successfully added."]')).toBeVisible()
+  });
 });

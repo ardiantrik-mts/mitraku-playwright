@@ -19,6 +19,10 @@ export class SideBar extends BasePage {
         this.logoutButton = page.locator('//span[text()="Log out"]/ancestor::a')
     }
 
+    async clickProductList(){
+        await this.productButton.click()
+    }
+
     async clickManageAccount(){
         await this.accountButton.click()
     }
