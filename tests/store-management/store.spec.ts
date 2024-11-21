@@ -11,8 +11,8 @@ test.beforeEach(async ({ page }) => {
     await page.waitForURL('**/store')
 });
 
-test.describe('Store Tests', () => {
-  test('should edit store successfully with valid data', async ({ page }) => {
+test.describe('Store Scenario Tests', () => {
+  test('Should edit store successfully with valid data', async ({ page }) => {
     const storePage = new StorePage(page)
     const storeForm = new StoreForm(page)
 
