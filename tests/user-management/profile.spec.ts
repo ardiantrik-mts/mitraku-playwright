@@ -11,8 +11,8 @@ test.beforeEach(async ({ page }) => {
     await page.waitForURL('**/store')
 });
 
-test.describe('Manage Account Tests', () => {
-  test('should edit profile infor successfully with valid data', async ({ page }) => {
+test.describe('Manage Account Scenario Tests', () => {
+  test('Should edit profile infor successfully with valid data', async ({ page }) => {
     const accountPage = new AccountPage(page)
     const sidebar = new SideBar(page)
 

@@ -13,6 +13,7 @@ export class ProductForm extends ProductPage {
     readonly unitField: Locator
     readonly descriptionField: Locator
     readonly image1Field: Locator
+    readonly image2Field: Locator
     readonly isSaleSwitch: Locator
     readonly backButton: Locator
     readonly nextButton: Locator
@@ -29,6 +30,7 @@ export class ProductForm extends ProductPage {
         this.unitField = page.locator('//select[@name="uom"]')
         this.descriptionField = page.locator('//textarea[@name="description"]')
         this.image1Field = page.locator('//input[@name="image1"]')
+        this.image2Field = page.locator('//input[@name="image2"]')
         this.isSaleSwitch = page.locator('//input[@name="isSellable"]')
         this.backButton = page.locator('//button[text()="Back"]')
         this.nextButton = page.locator('//button[text()="Next"]')
@@ -80,6 +82,11 @@ export class ProductForm extends ProductPage {
     async uploadImage1(image: string){
         const filePath = path.resolve(__dirname, '../../tests-resources/'+image)
         await this.image1Field.setInputFiles(filePath)
+    }
+
+    async uploadImage2(image: string){
+        const filePath = path.resolve(__dirname, '../../tests-resources/'+image)
+        await this.image2Field.setInputFiles(filePath)
     }
 
     async clickForSale(){
