@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
-import { faker } from '@faker-js/faker';
 import { AccountPage } from '../../pages/manage-account-page/AccountPage';
 import { SideBar } from '../../pages/SideBar';
+import { faker } from '@faker-js/faker';
+import { LoginPage } from '../../pages/LoginPage';
 
 test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page)

@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
 import { faker } from '@faker-js/faker';
-import { AccountPage } from '../../pages/manage-account-page/AccountPage';
 import { SideBar } from '../../pages/SideBar';
 import { ProductPage } from '../../pages/product-page/ProductPage';
 import { ProductForm } from '../../pages/product-page/ProductForm';
-import { ProductData } from '../../interfaces/productData';
+import { ProductData } from '../../../interfaces/productData';
 import { ProductDetail } from '../../pages/product-page/ProductDetail';
 
 const productData: ProductData = {
