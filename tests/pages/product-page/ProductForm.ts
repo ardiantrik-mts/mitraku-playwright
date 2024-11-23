@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 import { ProductPage } from './ProductPage';
 import path from 'path';
-import { ProductData } from '../../interfaces/productData';
+import { ProductData } from '../../../interfaces/productData'
 
 export class ProductForm extends ProductPage {
     readonly productListButton: Locator
@@ -80,12 +80,12 @@ export class ProductForm extends ProductPage {
     }
 
     async uploadImage1(image: string){
-        const filePath = path.resolve(__dirname, '../../tests-resources/'+image)
+        const filePath = path.resolve(__dirname, '../../../tests-resources/'+image)
         await this.image1Field.setInputFiles(filePath)
     }
 
     async uploadImage2(image: string){
-        const filePath = path.resolve(__dirname, '../../tests-resources/'+image)
+        const filePath = path.resolve(__dirname, '../../../tests-resources/'+image)
         await this.image2Field.setInputFiles(filePath)
     }
 
