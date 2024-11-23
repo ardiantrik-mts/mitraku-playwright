@@ -6,6 +6,7 @@ import { ProductPage } from '../../pages/product-page/ProductPage';
 import { ProductForm } from '../../pages/product-page/ProductForm';
 import { ProductData } from '../../../interfaces/productData';
 import { ProductDetail } from '../../pages/product-page/ProductDetail';
+import { testData } from '../../utils/testData';
 
 const productData: ProductData = {
   name: faker.commerce.productName(),
@@ -21,7 +22,7 @@ const productData: ProductData = {
 test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.navigateTo('https://mitraku-dev.on-premise.mitrais-dev.com/');
-    await loginPage.login('mitraku-auto@yopmail.com', 'Qwe123!@#');
+    await loginPage.login(testData.usersCollection.validUser.email, testData.usersCollection.validUser.password);
     await page.waitForURL('**/store')
 });
 

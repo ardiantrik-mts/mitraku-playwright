@@ -3,11 +3,12 @@ import { LoginPage } from '../../pages/LoginPage';
 import { StorePage } from '../../pages/store-page/StorePage';
 import { StoreForm } from '../../pages/store-page/StoreForm';
 import { faker } from '@faker-js/faker';
+import { testData } from '../../utils/testData';
 
 test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.navigateTo('https://mitraku-dev.on-premise.mitrais-dev.com/');
-    await loginPage.login('mitraku-auto@yopmail.com', 'Qwe123!@#');
+    await loginPage.login(testData.usersCollection.validUser.email, testData.usersCollection.validUser.password);
     await page.waitForURL('**/store')
 });
 
