@@ -80,12 +80,12 @@ export class ProductForm extends ProductPage {
     }
 
     async uploadImage1(image: string){
-        const filePath = path.resolve(__dirname, '../../../tests-resources/'+image)
+        const filePath = path.resolve(__dirname, '../../utils/test-data/'+image)
         await this.image1Field.setInputFiles(filePath)
     }
 
     async uploadImage2(image: string){
-        const filePath = path.resolve(__dirname, '../../../tests-resources/'+image)
+        const filePath = path.resolve(__dirname, '../../utils/test-data/'+image)
         await this.image2Field.setInputFiles(filePath)
     }
 

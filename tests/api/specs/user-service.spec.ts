@@ -1,11 +1,11 @@
 import { test, expect, request } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { AuthHelper } from '../helpers/authHelper';
+import { testData } from '../../utils/testData';
 
 let apiContext
 let token
-const userId = 'e96321de-5387-4958-9771-68a4ac52d39c'
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6WyJtZXJjaGFudCIsImN1c3RvbWVyIl0sImlzcyI6ImFjY2Vzc190b2tlbiIsInN1YiI6ImU5NjMyMWRlLTUzODctNDk1OC05NzcxLTY4YTRhYzUyZDM5YyIsImV4cCI6MTczMjMyMzQ3MCwiaWF0IjoxNzMyMjYzNDcwfQ.qdrDDoN8WJ16_lBStJj7Le4glzBzpkmbVyIzFsen4UA'
+const userId = testData.usersCollection.validUser.userId
 
 test.beforeEach(async ({ playwright }) => {
     let authHelper: AuthHelper
@@ -15,7 +15,7 @@ test.beforeEach(async ({ playwright }) => {
     })
 
     authHelper = new AuthHelper(apiContext)
-    token = await authHelper.login('mitraku-auto@yopmail.com', 'Qwe123!@#')
+    token = await authHelper.login(testData.usersCollection.validUser.email, testData.usersCollection.validUser.password)
 });
 
 test.afterEach(async () => {
