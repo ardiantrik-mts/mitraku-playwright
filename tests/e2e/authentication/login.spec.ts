@@ -8,7 +8,7 @@ test.describe('Login Scenario Tests', () => {
 
     await loginPage.navigateTo('https://mitraku-dev.on-premise.mitrais-dev.com/');
     await loginPage.login(testData.usersCollection.validUser.email, testData.usersCollection.validUser.password);
-    await page.waitForURL('**/store')
-    expect(await page.url()).toBe('https://mitraku-dev.on-premise.mitrais-dev.com/store')
+    await page.waitForURL('**/dashboard')
+    expect(await page.url()).toBe('https://mitraku-dev.on-premise.mitrais-dev.com/dashboard')
   });
 });

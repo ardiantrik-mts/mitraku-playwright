@@ -23,7 +23,7 @@ test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.navigateTo('https://mitraku-dev.on-premise.mitrais-dev.com/');
     await loginPage.login(testData.usersCollection.validUser.email, testData.usersCollection.validUser.password);
-    await page.waitForURL('**/store')
+    await page.waitForURL('**/dashboard')
 });
 
 test.describe.serial('Product Sceanrio Tests', () => {
@@ -87,6 +87,6 @@ test.describe.serial('Product Sceanrio Tests', () => {
     await productPage.clickConfirmDelete()
     
     await page.waitForTimeout(2000)
-    expect(await page.locator('//td[text()="Product Name"]').count()).toBe(0)
+    expect(await page.locator('//td[text()="'+productData.name+'"]').count()).toBe(0)
   });
 });

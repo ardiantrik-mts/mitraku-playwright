@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.navigateTo('https://mitraku-dev.on-premise.mitrais-dev.com/');
     await loginPage.login(testData.usersCollection.validUser.email, testData.usersCollection.validUser.password);
-    await page.waitForURL('**/store')
+    await page.waitForURL('**/dashboard')
 });
 
 test.describe('Manage Account Scenario Tests', () => {
