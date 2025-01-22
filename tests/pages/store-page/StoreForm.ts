@@ -7,6 +7,7 @@ export class StoreForm extends StorePage {
     readonly phoneField: Locator
     readonly addressField: Locator
     readonly descriptionField: Locator
+    readonly addButton: Locator
     readonly backButton: Locator
     readonly nextButton: Locator
     readonly updateButton: Locator
@@ -19,9 +20,10 @@ export class StoreForm extends StorePage {
         this.phoneField = page.locator('//input[@name="phoneNumber"]')
         this.addressField = page.locator('//input[@name="address"]')
         this.descriptionField = page.locator('//textarea[@name="description"]')
-        this.backButton = page.locator('//button[text()="Kembali"]')
-        this.nextButton = page.locator('//button[text()="Berikutnya"]')
-        this.updateButton = page.locator('//button[text()="Update Toko"]')
+        this.addButton = page.locator('//button[text()="Create Store" or text()="Buat Toko"]')
+        this.backButton = page.locator('//button[text()="Back" or text()="Kembali"]')
+        this.nextButton = page.locator('//button[text()="Next" or text()="Berikutnya"]')
+        this.updateButton = page.locator('//button[text()="Ubah Toko" or text()="Update Store"]')
     }
 
     async clickMyStoreButton(){

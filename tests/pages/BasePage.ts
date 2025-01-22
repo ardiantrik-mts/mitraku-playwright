@@ -6,7 +6,7 @@ export class BasePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.myStoreNavbar = page.locator('//span[text()="My Store"]/ancestor::a')
+    this.myStoreNavbar = page.locator('//span[text()="My Store" or text()="Toko Saya"]/ancestor::a')
   }
 
   async navigateTo(url: string): Promise<void> {

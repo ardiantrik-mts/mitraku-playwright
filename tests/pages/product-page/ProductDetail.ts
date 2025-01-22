@@ -7,8 +7,8 @@ export class ProductDetail extends ProductPage {
 
     constructor(page: Page) {
         super(page)
-        this.productListButton = page.locator('//p[text()="Product List"]/ancestor::a')
-        this.editProductButton = page.locator('//p[text()="Edit Product"]/ancestor::a')
+        this.productListButton = page.locator('//p[text()="Product List" or text()="Daftar Produk"]/ancestor::a')
+        this.editProductButton = page.locator('//p[text()="Edit Product" or text()="Ubah Produk"]/ancestor::a')
     }
 
     async clickProductList(){

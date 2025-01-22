@@ -21,7 +21,7 @@ export class ProductForm extends ProductPage {
 
     constructor(page: Page) {
         super(page)
-        this.productListButton = page.locator('//p[text()="Product List"]/ancestor::a')
+        this.productListButton = page.locator('//p[text()="Product List" or text()="Daftar Produk"]/ancestor::a')
         this.nameField = page.locator('//input[@name="name"]')
         this.categoryField = page.locator('//select[@data-testid="category-dropdown"]')
         this.typeField = page.locator('//select[@data-testid="type-dropdown"]')
@@ -32,9 +32,9 @@ export class ProductForm extends ProductPage {
         this.image1Field = page.locator('//input[@name="image1"]')
         this.image2Field = page.locator('//input[@name="image2"]')
         this.isSaleSwitch = page.locator('//input[@name="isSellable"]')
-        this.backButton = page.locator('//button[text()="Back"]')
-        this.nextButton = page.locator('//button[text()="Next"]')
-        this.saveButton = page.locator('//button[text()="Save"]')
+        this.backButton = page.locator('//button[text()="Back" or text()="Kembali"]')
+        this.nextButton = page.locator('//button[text()="Next" or text()="Berikutnya"]')
+        this.saveButton = page.locator('//button[text()="Save" or text()="Simpan"]')
     }
 
     dropdownOption(value: string): Locator {

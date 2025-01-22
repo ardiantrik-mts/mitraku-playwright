@@ -16,12 +16,12 @@ export class ProductPage extends BasePage {
     constructor(page: Page) {
         super(page)
         this.addProductButton = page.locator('//p[text()="Add Product" or text()="Tambah Produk"]/ancestor::a')
-        this.findProductField = page.locator('//input[@placeholder="Find Product"]')
-        this.productDetailButton = page.locator('//p[text()="View Details"]/ancestor::a')
+        this.findProductField = page.locator('//input[@placeholder="Find Product" or @placeholder="Cari Produk"]')
+        this.productDetailButton = page.locator('//p[text()="View Details" or text()="Lihat Detail"]/ancestor::a')
         this.productMenuButton = page.locator('//button[contains(@id,"headlessui-menu-button")]')
         this.editProductButton = page.locator('//span[text()="Edit"]/ancestor::a')
-        this.deleteProductButton = page.locator('//span[text()="Remove"]/ancestor::a')
-        this.confirmRemoveButton = page.locator('//button[text()="Remove"]')
+        this.deleteProductButton = page.locator('//span[text()="Remove" or text()="Hapus"]/ancestor::button')
+        this.confirmRemoveButton = page.locator('//button[text()="Remove" or text()="Hapus"]')
     }
 
     async clickAddProduct(){
